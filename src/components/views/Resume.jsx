@@ -23,22 +23,25 @@ export default function Resume() {
 
   return (
     <motion.div
-      className="space-y-8 pr-1"
+      className="page-shell page-shell-wide"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {}
-      <motion.div className="flex items-center gap-2 mb-1" variants={itemVariants}>
-        <Eye size={16} className="text-[var(--theme-primary)]" />
-        <h2 className="text-[var(--theme-primary)] text-sm font-[var(--font-mono)] font-bold text-glow">
-          ~/resume.pdf — Resume Viewer
-        </h2>
+      <motion.div className="page-header" variants={itemVariants}>
+        <div className="flex items-center gap-2 mb-4">
+          <Eye size={16} className="text-[var(--theme-primary)]" />
+          <h2 className="page-title mb-0 text-sm font-[var(--font-mono)] font-bold text-glow">
+            ~/resume.pdf — Resume Viewer
+          </h2>
+        </div>
+        <p className="page-subtitle text-xs font-[var(--font-mono)]">
+          Preview the resume inline or open the full PDF in a new tab.
+        </p>
       </motion.div>
 
-      {}
       <motion.div
-        className="flex flex-wrap gap-3"
+        className="terminal-section flex flex-wrap gap-4"
         variants={itemVariants}
       >
         {}
@@ -93,9 +96,8 @@ export default function Resume() {
         </motion.a>
       </motion.div>
 
-      {}
       <motion.div
-        className="glass rounded-xl overflow-hidden border-glow-animated"
+        className="terminal-section glass rounded-xl overflow-hidden border-glow-animated"
         variants={itemVariants}
       >
         {}
@@ -140,7 +142,6 @@ export default function Resume() {
         )}
       </motion.div>
 
-      {}
       <motion.p
         className="text-[var(--theme-text-muted)] text-[10px] font-[var(--font-mono)] text-center"
         variants={itemVariants}

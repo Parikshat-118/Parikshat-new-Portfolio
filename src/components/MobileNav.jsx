@@ -41,20 +41,20 @@ export default function MobileNav({ onNavigate, activeView }) {
     <>
       {/* Bottom Navigation Bar — in normal document flow, NOT fixed */}
       <div 
-        className="glass-strong flex items-center justify-around px-2 py-2 rounded-xl"
+        className="glass-strong flex items-center justify-around px-2 py-3 rounded-2xl"
         style={{
           borderTop: '1px solid var(--theme-border)',
           boxShadow: '0 -5px 20px rgba(0,0,0,0.3)',
-          minHeight: '64px'
+          minHeight: '72px'
         }}
       >
         {PRIMARY_TABS.map(({ command, label, icon: Icon }) => {
           const isActive = activeView === command;
           return (
-            <button
+              <button
               key={command}
               onClick={() => handleNavigate(command)}
-              className="flex flex-col items-center justify-center flex-1 py-1 transition-colors"
+              className="flex flex-col items-center justify-center flex-1 py-1.5 transition-colors"
             >
               <div 
                 className={`p-2 rounded-full mb-0.5 transition-all duration-300 ${isActive ? 'bg-[var(--theme-primary)] bg-opacity-20' : 'bg-transparent'}`}
@@ -78,7 +78,7 @@ export default function MobileNav({ onNavigate, activeView }) {
         {/* More Button */}
         <button
           onClick={() => setIsMoreOpen(true)}
-          className="flex flex-col items-center justify-center flex-1 py-1 transition-colors"
+          className="flex flex-col items-center justify-center flex-1 py-1.5 transition-colors"
         >
           <div 
             className="p-2 rounded-full mb-0.5 bg-transparent"
@@ -112,26 +112,27 @@ export default function MobileNav({ onNavigate, activeView }) {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed bottom-0 left-0 right-0 z-[70] glass-strong rounded-t-2xl overflow-hidden"
+              className="fixed bottom-0 left-0 right-0 z-[70] glass-strong rounded-t-[28px] overflow-hidden"
               style={{
+                bottom: 'calc(var(--mobile-nav-height) + var(--space-lg))',
                 borderTop: '1px solid var(--theme-border)',
-                paddingBottom: 'max(env(safe-area-inset-bottom), 1rem)'
+                paddingBottom: 'max(env(safe-area-inset-bottom), 1.5rem)'
               }}
             >
-              <div className="px-5 py-4 border-b border-[var(--theme-border)] flex items-center justify-between">
+              <div className="px-6 py-5 border-b border-[var(--theme-border)] flex items-center justify-between">
                 <span className="font-bold text-[var(--theme-primary)] text-glow">More Sections</span>
                 <button onClick={() => setIsMoreOpen(false)} className="p-1 text-[var(--theme-text-muted)] hover:text-[var(--theme-primary)]">
                   <X size={24} />
                 </button>
               </div>
-              <div className="p-4 grid grid-cols-2 gap-3">
+              <div className="p-6 grid grid-cols-2 gap-4">
                 {MORE_TABS.map(({ command, label, icon: Icon }) => {
                   const isActive = activeView === command;
                   return (
                     <button
                       key={command}
                       onClick={() => handleNavigate(command)}
-                      className="flex items-center gap-3 p-4 rounded-xl transition-colors text-left"
+                      className="flex items-center gap-3 p-4 rounded-2xl transition-colors text-left min-h-[76px]"
                       style={{
                         backgroundColor: isActive ? 'rgba(var(--theme-primary-rgb), 0.1)' : 'rgba(255,255,255,0.05)',
                         border: isActive ? '1px solid var(--theme-primary)' : '1px solid transparent'

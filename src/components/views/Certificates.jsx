@@ -42,7 +42,7 @@ function CertificateCard({ cert, index }) {
         scale: 1.02,
         boxShadow: '0 0 25px rgba(var(--theme-primary-rgb), 0.25), 0 0 50px rgba(var(--theme-primary-rgb), 0.08)',
       }}
-      className="glass rounded-xl p-5 border-glow-animated group"
+      className="glass terminal-card border-glow-animated group"
     >
       {}
       <div className="flex items-start justify-between mb-4">
@@ -117,27 +117,30 @@ function CertificateCard({ cert, index }) {
 export default function Certificates() {
   return (
     <motion.div
-      className="space-y-8 pr-1"
+      className="page-shell page-shell-wide"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {}
-      <motion.div className="flex items-center gap-2" variants={cardVariants}>
-        <Award size={16} className="text-[var(--theme-primary)]" />
-        <h2 className="text-[var(--theme-primary)] text-sm font-[var(--font-mono)] font-bold text-glow">
-          ~/certs — Certificates & Achievements
-        </h2>
+      <motion.div className="page-header" variants={cardVariants}>
+        <div className="flex items-center gap-2 mb-4">
+          <Award size={16} className="text-[var(--theme-primary)]" />
+          <h2 className="page-title mb-0 text-sm font-[var(--font-mono)] font-bold text-glow">
+            ~/certs — Certificates & Achievements
+          </h2>
+        </div>
+        <p className="page-subtitle text-xs font-[var(--font-mono)]">
+          Verified coursework and technical certifications.
+        </p>
       </motion.div>
       <motion.p
-        className="text-[var(--theme-text-muted)] text-xs font-[var(--font-mono)] ml-1"
+        className="terminal-section text-[var(--theme-text-muted)] text-xs font-[var(--font-mono)] ml-1"
         variants={cardVariants}
       >
         {certificates.length} certificates earned
       </motion.p>
 
-      {}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {certificates.map((cert, index) => (
           <CertificateCard key={cert.id} cert={cert} index={index} />
         ))}

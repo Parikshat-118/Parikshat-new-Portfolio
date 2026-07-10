@@ -194,21 +194,21 @@ export default function Videos() {
   };
 
   return (
-    <div className="space-y-8 pr-1" onKeyDown={handleKeyDown} tabIndex={-1}>
-      {}
-      <div className="flex items-center gap-2 mb-1">
-        <Film size={16} className="text-[var(--theme-primary)]" />
-        <h2 className="text-[var(--theme-primary)] text-sm font-[var(--font-mono)] font-bold text-glow">
-          ~/videos — Video Edits Gallery
-        </h2>
+    <div className="page-shell page-shell-wide" onKeyDown={handleKeyDown} tabIndex={-1}>
+      <div className="page-header">
+        <div className="flex items-center gap-2 mb-4">
+          <Film size={16} className="text-[var(--theme-primary)]" />
+          <h2 className="page-title mb-0 text-sm font-[var(--font-mono)] font-bold text-glow">
+            ~/videos — Video Edits Gallery
+          </h2>
+        </div>
+        <p className="page-subtitle text-xs font-[var(--font-mono)]">
+          Click any card to watch • {videos.length} edits available
+        </p>
       </div>
-      <p className="text-[var(--theme-text-muted)] text-xs font-[var(--font-mono)] ml-1">
-        Click any card to watch • {videos.length} edits available
-      </p>
 
-      {}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4"
+        className="terminal-section grid grid-cols-1 md:grid-cols-2 gap-6"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -223,7 +223,6 @@ export default function Videos() {
         ))}
       </motion.div>
 
-      {}
       <AnimatePresence>
         {selectedVideo && (
           <VideoModal

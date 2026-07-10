@@ -108,7 +108,7 @@ const contentVariants = {
 };
 
 const TreeRow = ({ isLast, children }) => (
-  <div className="flex items-start gap-2 ml-4 text-sm">
+  <div className="flex items-start gap-3 ml-5 text-sm leading-[1.8]">
     <span
       className="select-none shrink-0"
       style={{ color: 'var(--theme-text-muted)' }}
@@ -125,11 +125,10 @@ function ProjectFolder({ project }) {
   const FolderIcon = isOpen ? FolderOpen : Folder;
 
   return (
-    <motion.div variants={folderVariants} className="mb-5 sm:mb-3">
-      {}
+    <motion.div variants={folderVariants} className="terminal-card mb-6">
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-2 w-full text-left text-sm py-1 px-2 rounded-md transition-colors duration-200 cursor-pointer group"
+        className="flex items-center gap-3 w-full text-left text-sm py-2 px-3 rounded-xl transition-colors duration-200 cursor-pointer group"
         style={{ color: 'var(--theme-primary)' }}
         onMouseEnter={(e) => {
           e.currentTarget.style.background =
@@ -161,7 +160,7 @@ function ProjectFolder({ project }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="overflow-hidden"
+            className="overflow-hidden mt-4 terminal-stack-sm"
           >
             {}
             <TreeRow isLast={false}>
@@ -250,45 +249,43 @@ function ProjectFolder({ project }) {
 export default function Projects() {
   return (
     <motion.div
-      className="py-2 pr-1 sm:ml-1 max-w-3xl"
+      className="page-shell"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {}
-      <motion.div variants={folderVariants} className="mb-10 sm:mb-8">
+      <motion.div variants={folderVariants} className="page-header">
         <h2
-          className="text-xl font-bold text-glow mb-1"
+          className="page-title text-xl font-bold text-glow"
           style={{ fontFamily: 'var(--font-mono)' }}
         >
           {'>'} Projects
         </h2>
         <p
-          className="text-xs"
+          className="page-subtitle text-xs"
           style={{ color: 'var(--theme-text-muted)' }}
         >
           Click a folder to expand · Links open in new tabs
         </p>
       </motion.div>
 
-      {}
       <motion.div
         variants={folderVariants}
-        className="text-xs mb-6"
+        className="terminal-section text-xs"
         style={{ color: 'var(--theme-primary)', opacity: 0.6 }}
       >
         ~/projects/
       </motion.div>
 
-      {}
-      {PROJECTS.map((project) => (
-        <ProjectFolder key={project.id} project={project} />
-      ))}
+      <div className="terminal-section">
+        {PROJECTS.map((project) => (
+          <ProjectFolder key={project.id} project={project} />
+        ))}
+      </div>
 
-      {}
       <motion.p
         variants={folderVariants}
-        className="text-xs mt-3"
+        className="text-xs"
         style={{ color: 'var(--theme-text-muted)' }}
       >
         {PROJECTS.length} projects listed · more coming soon...

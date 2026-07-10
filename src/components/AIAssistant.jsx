@@ -118,7 +118,7 @@ export default function AIAssistant({ onAction }) {
       {}
       <motion.button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50 glass rounded-full px-4 py-3 flex items-center gap-2 cursor-pointer select-none"
+        className="fixed bottom-[calc(var(--mobile-nav-height)+var(--space-lg))] md:bottom-6 right-4 md:right-6 z-50 glass rounded-full px-3.5 py-2.5 md:px-4 md:py-3 flex items-center gap-2 cursor-pointer select-none"
         style={{
           boxShadow: 'var(--theme-glow)',
           border: '1px solid rgba(var(--theme-primary-rgb), 0.3)',
@@ -138,8 +138,8 @@ export default function AIAssistant({ onAction }) {
           }}
         />
 
-        <Bot size={18} className="text-[var(--theme-primary)]" />
-        <span className="text-[var(--theme-primary)] text-sm font-[var(--font-mono)] font-bold">
+        <Bot size={16} className="text-[var(--theme-primary)] md:w-[18px] md:h-[18px]" />
+        <span className="text-[var(--theme-primary)] text-xs md:text-sm font-[var(--font-mono)] font-bold">
           {isOpen ? 'Close' : 'Ask AI'}
         </span>
       </motion.button>
@@ -153,10 +153,10 @@ export default function AIAssistant({ onAction }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed bottom-[110px] md:bottom-20 right-4 md:right-6 z-50 flex flex-col overflow-hidden rounded-xl"
+            className="fixed bottom-[calc(var(--mobile-nav-height)+var(--space-2xl))] md:bottom-20 right-4 md:right-6 z-50 flex flex-col overflow-hidden rounded-xl"
             style={{
-              width: '320px',
-              height: '420px',
+              width: 'min(320px, calc(100vw - 2rem))',
+              height: 'min(420px, calc(100dvh - var(--mobile-nav-height) - 10rem))',
               boxShadow: 'var(--theme-glow-strong)',
             }}
           >

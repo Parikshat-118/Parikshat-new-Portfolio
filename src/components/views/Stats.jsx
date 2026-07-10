@@ -215,30 +215,26 @@ export default function Stats() {
 
   return (
     <motion.div
-      className="space-y-10 p-1 pr-1"
+      className="page-shell page-shell-wide"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
-      {}
-      <motion.div variants={cardVariants}>
-        <h2 className="text-xl font-bold text-[var(--theme-primary)] text-glow font-[var(--font-mono)] flex items-center gap-2">
+      <motion.div variants={cardVariants} className="page-header">
+        <h2 className="page-title text-xl font-bold text-[var(--theme-primary)] text-glow font-[var(--font-mono)] flex items-center gap-2">
           <Code size={22} />
           ~/stats
         </h2>
-        <p className="text-[var(--theme-text-muted)] text-sm mt-1 font-[var(--font-mono)]">
+        <p className="page-subtitle text-sm font-[var(--font-mono)]">
           GitHub &amp; LeetCode performance dashboard
         </p>
       </motion.div>
 
-      {}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-        {}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <motion.div
           variants={sectionVariants}
-          className="glass-strong rounded-xl p-5 space-y-5"
+          className="glass-strong terminal-card terminal-stack-md"
         >
-          {}
           <div className="flex items-center gap-3">
             <div
               className="w-10 h-10 rounded-lg flex items-center justify-center"
@@ -257,7 +253,6 @@ export default function Stats() {
                 @{GITHUB_USER}
               </p>
             </div>
-            {}
             {!loading && !error && (
               <div className="ml-auto flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -268,7 +263,6 @@ export default function Stats() {
             )}
           </div>
 
-          {}
           {loading && (
             <div className="flex flex-col items-center justify-center py-8 gap-3">
               <Loader2
@@ -281,7 +275,6 @@ export default function Stats() {
             </div>
           )}
 
-          {}
           {error && !loading && (
             <div className="flex flex-col items-center justify-center py-8 gap-3">
               <AlertTriangle size={28} className="text-red-400" />
@@ -297,10 +290,9 @@ export default function Stats() {
             </div>
           )}
 
-          {}
           {githubData && !loading && (
             <motion.div
-              className="grid grid-cols-2 sm:grid-cols-3 gap-3"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -312,12 +304,10 @@ export default function Stats() {
           )}
         </motion.div>
 
-        {}
         <motion.div
           variants={sectionVariants}
-          className="glass-strong rounded-xl p-5 space-y-5"
+          className="glass-strong terminal-card terminal-stack-md"
         >
-          {}
           <div className="flex items-center gap-3">
             <div
               className="w-10 h-10 rounded-lg flex items-center justify-center"
@@ -336,7 +326,6 @@ export default function Stats() {
                 @{GITHUB_USER}
               </p>
             </div>
-            {}
             {!lcLoading && !lcError && (
               <div className="ml-auto flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -347,7 +336,6 @@ export default function Stats() {
             )}
           </div>
           
-          {}
           {lcLoading && (
             <div className="flex flex-col items-center justify-center py-8 gap-3">
               <Loader2
@@ -360,7 +348,6 @@ export default function Stats() {
             </div>
           )}
 
-          {}
           {lcError && !lcLoading && (
             <div className="flex flex-col items-center justify-center py-8 gap-3">
               <AlertTriangle size={28} className="text-red-400" />
@@ -378,7 +365,6 @@ export default function Stats() {
 
           {!lcLoading && !lcError && (
             <>
-              {}
               <motion.div
                 variants={cardVariants}
                 className="glass achievement-badge rounded-xl p-5 flex flex-col items-center gap-1"
@@ -397,17 +383,15 @@ export default function Stats() {
                 </span>
               </motion.div>
 
-              {}
               <motion.div variants={cardVariants} className="space-y-3">
                 <ProgressBar {...leetCodeStats.easy} />
                 <ProgressBar {...leetCodeStats.medium} />
                 <ProgressBar {...leetCodeStats.hard} />
               </motion.div>
 
-              {}
               <motion.div
                 variants={containerVariants}
-                className="grid grid-cols-3 gap-1.5 sm:gap-2"
+                className="grid grid-cols-3 gap-2 sm:gap-3"
               >
                 {[leetCodeStats.easy, leetCodeStats.medium, leetCodeStats.hard].map(
                   (diff) => (
@@ -435,7 +419,6 @@ export default function Stats() {
             </>
           )}
 
-          {}
           <p className="text-[var(--theme-text-muted)] text-[10px] font-[var(--font-mono)] text-center italic opacity-70">
             Stats auto-update directly from GitHub and LeetCode APIs.
           </p>

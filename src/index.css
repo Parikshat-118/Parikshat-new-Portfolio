@@ -23,6 +23,17 @@
   /* Font stacks */
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 56px;
+  --space-2xl: 72px;
+  --mobile-nav-height: 72px;
+  --ai-button-size: 56px;
+  --ai-safe-offset: calc(var(--mobile-nav-height) + var(--ai-button-size) + var(--space-lg));
 }
 
 /* ─── Theme Variants ─── */
@@ -226,6 +237,79 @@ body {
   border: 1px solid rgba(var(--theme-primary-rgb), 0.15);
 }
 
+/* ─── Layout Rhythm ─── */
+.page-shell {
+  width: 100%;
+  max-width: 56rem;
+  padding: var(--space-md) var(--space-sm) calc(var(--ai-safe-offset) + var(--space-md)) var(--space-sm);
+}
+
+.page-shell-wide {
+  max-width: 72rem;
+}
+
+.page-header {
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.page-title {
+  margin: 0 0 var(--space-sm);
+  color: var(--theme-primary);
+  font-family: var(--font-mono);
+}
+
+.page-subtitle {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--theme-text-muted);
+  line-height: 1.7;
+}
+
+.terminal-section {
+  margin-bottom: var(--space-xl);
+}
+
+.terminal-section:last-child {
+  margin-bottom: 0;
+}
+
+.terminal-card {
+  background: rgba(var(--theme-primary-rgb), 0.04);
+  border: 1px solid rgba(var(--theme-primary-rgb), 0.14);
+  border-radius: 1rem;
+  padding: var(--space-md);
+}
+
+.terminal-copy {
+  max-width: 68ch;
+  color: var(--theme-text);
+  line-height: 1.8;
+}
+
+.terminal-copy p {
+  margin-bottom: var(--space-md);
+}
+
+.terminal-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.terminal-stack-sm {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.terminal-stack-md {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.terminal-stack-lg {
+  display: grid;
+  gap: var(--space-lg);
+}
+
 /* ─── Terminal Prompt Colors ─── */
 .prompt-user { color: var(--theme-primary); }
 .prompt-separator { color: var(--theme-text-muted); }
@@ -347,6 +431,11 @@ body {
 
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
+  :root {
+    --mobile-nav-height: 84px;
+    --ai-safe-offset: calc(var(--mobile-nav-height) + var(--ai-button-size) + var(--space-xl));
+  }
+
   .custom-cursor,
   .cursor-glow {
     display: none !important;
@@ -361,6 +450,22 @@ body {
   .glass-strong {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  .page-shell {
+    padding: var(--space-md) var(--space-sm) calc(var(--ai-safe-offset) + var(--space-lg)) var(--space-sm);
+  }
+}
+
+@media (min-width: 769px) {
+  :root {
+    --ai-safe-offset: calc(var(--ai-button-size) + var(--space-2xl));
+  }
+
+  .page-shell {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    padding-bottom: calc(var(--ai-safe-offset) + var(--space-md));
   }
 }
 

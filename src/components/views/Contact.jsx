@@ -90,27 +90,29 @@ export default function Contact() {
 
   return (
     <motion.div
-      className="space-y-8 pr-1"
+      className="page-shell max-w-3xl"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {}
-      <motion.div className="flex items-center gap-2" variants={itemVariants}>
-        <Send size={16} className="text-[var(--theme-primary)]" />
-        <h2 className="text-[var(--theme-primary)] text-sm font-[var(--font-mono)] font-bold text-glow">
-          ~/contact.sh — Establish Connection
-        </h2>
+      <motion.div className="page-header" variants={itemVariants}>
+        <div className="flex items-center gap-2 mb-4">
+          <Send size={16} className="text-[var(--theme-primary)]" />
+          <h2 className="page-title mb-0 text-sm font-[var(--font-mono)] font-bold text-glow">
+            ~/contact.sh — Establish Connection
+          </h2>
+        </div>
+        <p className="page-subtitle text-xs font-[var(--font-mono)]">
+          Drop a message or use any of the direct channels below.
+        </p>
       </motion.div>
 
-      {}
       <motion.form
         onSubmit={handleSubmit}
-        className="glass rounded-xl p-4 sm:p-5 space-y-4 border-glow-animated"
+        className="terminal-section glass terminal-card space-y-6 border-glow-animated"
         variants={itemVariants}
       >
-        {}
-        <div className="space-y-1.5">
+        <div className="space-y-2.5">
           <label className="text-[var(--theme-text-muted)] text-xs font-[var(--font-mono)] flex items-center gap-1.5">
             <Mail size={12} className="text-[var(--theme-primary)]" />
             email:
@@ -132,8 +134,7 @@ export default function Contact() {
           />
         </div>
 
-        {}
-        <div className="space-y-1.5">
+        <div className="space-y-2.5">
           <label className="text-[var(--theme-text-muted)] text-xs font-[var(--font-mono)] flex items-center gap-1.5">
             <Send size={12} className="text-[var(--theme-primary)]" />
             message:
@@ -155,7 +156,6 @@ export default function Contact() {
           />
         </div>
 
-        {}
         <motion.button
           type="submit"
           disabled={status === 'sending'}
@@ -176,7 +176,6 @@ export default function Contact() {
           {status === 'sending' ? '$ sending...' : '$ transmit message'}
         </motion.button>
 
-        {}
         {status === 'success' && (
           <motion.p
             initial={{ opacity: 0, y: -5 }}
@@ -197,13 +196,12 @@ export default function Contact() {
         )}
       </motion.form>
 
-      {}
-      <motion.div className="space-y-2" variants={itemVariants}>
-        <p className="text-[var(--theme-text-muted)] text-xs font-[var(--font-mono)] ml-1">
+      <motion.div className="terminal-section" variants={itemVariants}>
+        <p className="text-[var(--theme-text-muted)] text-xs font-[var(--font-mono)] mb-4 ml-1">
           Alternative channels:
         </p>
 
-        <div className="space-y-1.5">
+        <div className="terminal-stack-sm">
           {SOCIAL_LINKS.map(({ icon: Icon, label, href, prefix }) => (
             <motion.a
               key={prefix}
@@ -212,7 +210,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               variants={itemVariants}
               whileHover={{ x: 4 }}
-              className="command-link flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-[var(--font-mono)] group"
+              className="command-link terminal-card flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-[var(--font-mono)] group"
             >
               <Icon
                 size={14}

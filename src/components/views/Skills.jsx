@@ -168,28 +168,25 @@ function SkillBar({ name, level }) {
 export default function Skills() {
   return (
     <motion.div
-      className="py-2 pr-1 sm:ml-1 max-w-3xl"
+      className="page-shell"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {}
-      <motion.div variants={categoryVariants} className="mb-10 sm:mb-8">
+      <motion.div variants={categoryVariants} className="page-header">
         <h2
-          className="text-xl font-bold text-glow mb-1"
+          className="page-title text-xl font-bold text-glow"
           style={{ fontFamily: 'var(--font-mono)' }}
         >
           {'>'} Skills
         </h2>
-        <p className="text-xs" style={{ color: 'var(--theme-text-muted)' }}>
+        <p className="page-subtitle text-xs" style={{ color: 'var(--theme-text-muted)' }}>
           cat skills.json | pretty-print
         </p>
       </motion.div>
 
-      {}
       {SKILL_CATEGORIES.map(({ category, icon, skills }) => (
-        <motion.div key={category} variants={categoryVariants} className="mb-10 sm:mb-8">
-          {}
+        <motion.div key={category} variants={categoryVariants} className="terminal-section">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-sm select-none">{icon}</span>
             <span
@@ -207,8 +204,7 @@ export default function Skills() {
             />
           </div>
 
-          {}
-          <div className="space-y-1.5 ml-2">
+          <div className="terminal-card terminal-stack-sm ml-2">
             {skills.map((skill) => (
               <SkillBar key={skill.name} {...skill} />
             ))}
@@ -223,10 +219,9 @@ export default function Skills() {
         </motion.div>
       ))}
 
-      {}
       <motion.p
         variants={skillVariants}
-        className="text-xs mt-2"
+        className="text-xs"
         style={{ color: 'var(--theme-text-muted)' }}
       >
         {SKILL_CATEGORIES.reduce((sum, cat) => sum + cat.skills.length, 0)}{' '}

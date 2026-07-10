@@ -101,7 +101,7 @@ function TimelineItem({ item, index, total }) {
   return (
     <div className="relative flex items-start">
       {}
-      <div className="flex flex-col items-center shrink-0" style={{ width: '40px' }}>
+      <div className="flex flex-col items-center shrink-0" style={{ width: '48px' }}>
         {}
         <motion.div
           className="relative z-10"
@@ -110,7 +110,7 @@ function TimelineItem({ item, index, total }) {
           transition={{ delay: index * 0.18 + 0.3, type: 'spring', stiffness: 300 }}
         >
           <div
-            className="w-3.5 h-3.5 rounded-full"
+            className="w-4 h-4 rounded-full"
             style={{
               background: isFuture
                 ? 'var(--theme-secondary)'
@@ -141,7 +141,7 @@ function TimelineItem({ item, index, total }) {
         {}
         {!isLast && (
           <div
-            className="w-px flex-1 min-h-[40px]"
+            className="w-px flex-1 min-h-[64px]"
             style={{
               background: `linear-gradient(
                 to bottom,
@@ -156,10 +156,10 @@ function TimelineItem({ item, index, total }) {
       {}
       <motion.div
         variants={itemVariants}
-        className="flex-1 pb-12 sm:pb-10 ml-3"
+        className="flex-1 pb-16 sm:pb-14 ml-4"
       >
         <div
-          className="p-3 rounded-lg transition-all duration-300 group"
+          className="terminal-card transition-all duration-300 group"
           style={{
             background: 'rgba(var(--theme-primary-rgb), 0.03)',
             border: '1px solid rgba(var(--theme-primary-rgb), 0.1)',
@@ -178,7 +178,7 @@ function TimelineItem({ item, index, total }) {
           }}
         >
           {}
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex items-center gap-3 mb-3">
             <span className="select-none text-base">{item.icon}</span>
             <span
               className="text-xs font-bold px-2 py-0.5 rounded"
@@ -196,7 +196,7 @@ function TimelineItem({ item, index, total }) {
 
           {}
           <h3
-            className="text-sm font-bold mb-1"
+            className="text-sm font-bold mb-2"
             style={{ color: 'var(--theme-primary)' }}
           >
             {item.title}
@@ -204,7 +204,7 @@ function TimelineItem({ item, index, total }) {
 
           {}
           <p
-            className="text-xs leading-relaxed"
+            className="text-xs leading-[1.8]"
             style={{ color: 'var(--theme-text-muted)' }}
           >
             {item.description}
@@ -218,26 +218,24 @@ function TimelineItem({ item, index, total }) {
 export default function Experience() {
   return (
     <motion.div
-      className="py-2 pr-1 sm:ml-1 max-w-2xl"
+      className="page-shell max-w-3xl"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {}
-      <motion.div variants={headerVariants} className="mb-6 sm:mb-4">
+      <motion.div variants={headerVariants} className="page-header">
         <h2
-          className="text-xl font-bold text-glow mb-1"
+          className="page-title text-xl font-bold text-glow"
           style={{ fontFamily: 'var(--font-mono)' }}
         >
           {'>'} Experience Timeline
         </h2>
-        <p className="text-xs" style={{ color: 'var(--theme-text-muted)' }}>
+        <p className="page-subtitle text-xs" style={{ color: 'var(--theme-text-muted)' }}>
           git log --oneline --graph --all
         </p>
       </motion.div>
 
-      {}
-      <div className="relative">
+      <div className="terminal-section relative">
         {TIMELINE.map((item, index) => (
           <TimelineItem
             key={`${item.year}-${item.title}`}
@@ -248,10 +246,9 @@ export default function Experience() {
         ))}
       </div>
 
-      {}
       <motion.p
         variants={headerVariants}
-        className="text-xs mt-2"
+        className="text-xs"
         style={{ color: 'var(--theme-text-muted)' }}
       >
         Timeline auto-updates · {TIMELINE.length} milestones tracked

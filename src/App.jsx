@@ -394,7 +394,7 @@ function App() {
           </div>
 
           {/* ─── Mobile Bottom Nav (in-flow, not fixed) ─── */}
-          <div className="md:hidden w-full max-w-[1600px] flex-shrink-0 mt-2">
+          <div className="md:hidden w-full max-w-[1600px] flex-shrink-0 mt-4 pb-1">
             <MobileNav
               onNavigate={(cmd) => {
                 setActiveView(cmd)

@@ -68,54 +68,51 @@ const BADGES = [
 export default function About() {
   return (
     <motion.div
-      className="py-2 pb-8 pr-1 sm:ml-1 max-w-3xl"
+      className="page-shell"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {}
-      <motion.div variants={itemVariants} className="mb-10 sm:mb-8">
+      <motion.div variants={itemVariants} className="page-header">
         <h2
-          className="text-xl font-bold text-glow mb-1"
+          className="page-title text-xl font-bold text-glow"
           style={{ fontFamily: 'var(--font-mono)' }}
         >
           {'>'} About Me
         </h2>
         <p
-          className="text-sm italic"
+          className="page-subtitle text-sm italic"
           style={{ color: 'var(--theme-text-muted)' }}
         >
           Coder. Creator. Photographer. Explorer.
         </p>
       </motion.div>
 
-      {}
-      <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-12 sm:mb-10">
+      <motion.div variants={itemVariants} className="terminal-section terminal-card flex flex-col sm:flex-row items-center sm:items-start gap-6 md:gap-8">
         <img 
           src="/assets/images/profile.jpg" 
           alt="Parikshat Singh" 
-          className="w-24 h-24 sm:w-20 sm:h-20 shrink-0 rounded-full border-2 object-cover"
+          className="w-24 h-24 sm:w-24 sm:h-24 shrink-0 rounded-full border-2 object-cover"
           style={{ borderColor: 'var(--theme-primary)', boxShadow: '0 0 10px rgba(var(--theme-primary-rgb), 0.3)' }}
         />
-        <div className="flex flex-col gap-2">
-          <p className="text-sm text-[var(--theme-text)] leading-relaxed">
+        <div className="terminal-copy text-sm">
+          <p>
             Hi, I'm Parikshat Singh, a Computer Science student passionate about building intelligent software that solves real-world problems. I enjoy working at the intersection of AI, machine learning, full-stack development, and computer vision, turning ideas into practical applications. From developing RAG-powered systems and AI-driven platforms to contributing to deep learning research, I love exploring technologies that create meaningful impact. I'm always looking to learn, build, and collaborate on projects that push the boundaries of innovation.
           </p>
         </div>
       </motion.div>
 
-      {}
-      <motion.div variants={itemVariants} className="mb-12 sm:mb-10">
+      <motion.div variants={itemVariants} className="terminal-section">
         <p
-          className="text-xs uppercase tracking-wider mb-2 font-semibold"
+          className="text-xs uppercase tracking-wider mb-4 font-semibold"
           style={{ color: 'var(--theme-primary)' }}
         >
           ┌─ Education
         </p>
 
-        <div className="space-y-5 ml-2">
+        <div className="terminal-stack-md ml-2">
           <div
-            className="p-2 rounded-md transition-colors duration-200"
+            className="terminal-card transition-colors duration-200"
             style={{ borderLeft: '2px solid rgba(var(--theme-primary-rgb), 0.3)' }}
           >
             <div className="flex justify-between items-start">
@@ -128,7 +125,7 @@ export default function About() {
             <p className="text-xs mt-1" style={{ color: 'var(--theme-text-muted)' }}>Current CGPA: 8.7 / 10</p>
           </div>
           <div
-            className="p-2 rounded-md transition-colors duration-200"
+            className="terminal-card transition-colors duration-200"
             style={{ borderLeft: '2px solid rgba(var(--theme-primary-rgb), 0.3)' }}
           >
             <div className="flex justify-between items-start">
@@ -150,21 +147,20 @@ export default function About() {
         </p>
       </motion.div>
 
-      {}
-      <motion.div variants={itemVariants} className="mb-12 sm:mb-10">
+      <motion.div variants={itemVariants} className="terminal-section">
         <p
-          className="text-xs uppercase tracking-wider mb-2 font-semibold"
+          className="text-xs uppercase tracking-wider mb-4 font-semibold"
           style={{ color: 'var(--theme-primary)' }}
         >
           ┌─ Interests & Passions
         </p>
 
-        <div className="space-y-4 ml-2">
+        <div className="terminal-stack-md ml-2">
           {INTERESTS.map(({ emoji, title, desc }) => (
             <motion.div
               key={title}
               variants={itemVariants}
-              className="flex items-start gap-3 p-2 rounded-md transition-colors duration-200"
+              className="terminal-card flex items-start gap-4 transition-colors duration-200"
               style={{
                 borderLeft: '2px solid rgba(var(--theme-primary-rgb), 0.3)',
               }}
@@ -201,10 +197,9 @@ export default function About() {
         </p>
       </motion.div>
 
-      {}
       <motion.div
         variants={itemVariants}
-        className="mb-12 sm:mb-10 p-4 rounded-md"
+        className="terminal-section terminal-card"
         style={{
           borderLeft: '3px solid var(--theme-primary)',
           background: 'rgba(var(--theme-primary-rgb), 0.04)',
@@ -219,10 +214,9 @@ export default function About() {
         </p>
       </motion.div>
 
-      {}
-      <motion.div variants={itemVariants}>
+      <motion.div variants={itemVariants} className="terminal-section">
         <p
-          className="text-xs uppercase tracking-wider mb-3 font-semibold"
+          className="text-xs uppercase tracking-wider mb-4 font-semibold"
           style={{ color: 'var(--theme-primary)' }}
         >
           ┌─ Achievements

@@ -74,7 +74,7 @@ export default function About() {
       animate="visible"
     >
       {}
-      <motion.div variants={itemVariants} className="mb-8">
+      <motion.div variants={itemVariants} className="mb-10 sm:mb-8">
         <h2
           className="text-xl font-bold text-glow mb-1"
           style={{ fontFamily: 'var(--font-mono)' }}
@@ -90,7 +90,7 @@ export default function About() {
       </motion.div>
 
       {}
-      <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-10">
+      <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-12 sm:mb-10">
         <img 
           src="/assets/images/profile.jpg" 
           alt="Parikshat Singh" 
@@ -105,7 +105,7 @@ export default function About() {
       </motion.div>
 
       {}
-      <motion.div variants={itemVariants} className="mb-10">
+      <motion.div variants={itemVariants} className="mb-12 sm:mb-10">
         <p
           className="text-xs uppercase tracking-wider mb-2 font-semibold"
           style={{ color: 'var(--theme-primary)' }}
@@ -151,7 +151,7 @@ export default function About() {
       </motion.div>
 
       {}
-      <motion.div variants={itemVariants} className="mb-10">
+      <motion.div variants={itemVariants} className="mb-12 sm:mb-10">
         <p
           className="text-xs uppercase tracking-wider mb-2 font-semibold"
           style={{ color: 'var(--theme-primary)' }}
@@ -204,7 +204,7 @@ export default function About() {
       {}
       <motion.div
         variants={itemVariants}
-        className="mb-10 p-4 rounded-md"
+        className="mb-12 sm:mb-10 p-4 rounded-md"
         style={{
           borderLeft: '3px solid var(--theme-primary)',
           background: 'rgba(var(--theme-primary-rgb), 0.04)',

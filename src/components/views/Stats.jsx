@@ -215,7 +215,7 @@ export default function Stats() {
 
   return (
     <motion.div
-      className="space-y-8 sm:space-y-10 p-1 pr-1"
+      className="space-y-10 p-1 pr-1"
       initial="hidden"
       animate="visible"
       variants={containerVariants}

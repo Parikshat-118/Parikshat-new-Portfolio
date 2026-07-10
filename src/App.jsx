@@ -44,11 +44,19 @@ function App() {
   const [devMode, setDevMode] = useState(false)
   const [terminalOutput, setTerminalOutput] = useState(null)
   const [showNeofetch, setShowNeofetch] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const terminalRef = useRef(null)
   const startTime = useRef(Date.now())
 
   // ─── Clock State ───
   const [clock, setClock] = useState('')
+
+  useEffect(() => {
+    const updateViewportMode = () => setIsMobile(window.innerWidth < 768)
+    updateViewportMode()
+    window.addEventListener('resize', updateViewportMode)
+    return () => window.removeEventListener('resize', updateViewportMode)
+  }, [])
 
   useEffect(() => {
     const updateClock = () => {
@@ -266,7 +274,7 @@ function App() {
       {}
       {booted && (
         <CyberBackground
-          visible={showMatrix}
+          visible={showMatrix && !isMobile}
           themeColor={THEMES[theme]?.color || '#00ffc6'}
           mousePosition={mousePosition}
         />
@@ -285,13 +293,15 @@ function App() {
         >
           {/* Terminal Window — takes all remaining space */}
           <div
-            className="glass-strong w-full flex-1 min-h-0 max-w-[1600px] rounded-xl md:rounded-2xl flex flex-col overflow-hidden border border-solid border-glow-animated flicker"
+            className={`glass-strong w-full flex-1 min-h-0 max-w-[1600px] rounded-xl md:rounded-2xl flex flex-col overflow-hidden border border-solid ${isMobile ? '' : 'border-glow-animated flicker'}`}
             style={{
-              transform: `perspective(1200px) rotateX(${mousePosition.y * 1.5}deg) rotateY(${mousePosition.x * 1.5}deg)`,
-              transition: 'transform 0.3s ease-out',
+              transform: isMobile
+                ? 'none'
+                : `perspective(1200px) rotateX(${mousePosition.y * 1.5}deg) rotateY(${mousePosition.x * 1.5}deg)`,
+              transition: isMobile ? 'none' : 'transform 0.3s ease-out',
               boxShadow: `
-                0 0 30px rgba(var(--theme-primary-rgb), 0.1),
-                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 ${isMobile ? '16px' : '30px'} rgba(var(--theme-primary-rgb), 0.1),
+                0 ${isMobile ? '12px 24px' : '25px 50px'} rgba(0, 0, 0, 0.5),
                 inset 0 1px 0 rgba(255, 255, 255, 0.05)
               `,
             }}

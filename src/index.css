@@ -351,6 +351,17 @@ body {
   .cursor-glow {
     display: none !important;
   }
+
+  .flicker,
+  .border-glow-animated {
+    animation: none !important;
+  }
+
+  .glass,
+  .glass-strong {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 @media (min-width: 769px) {

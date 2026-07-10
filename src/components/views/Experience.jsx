@@ -156,7 +156,7 @@ function TimelineItem({ item, index, total }) {
       {}
       <motion.div
         variants={itemVariants}
-        className="flex-1 pb-10 ml-3"
+        className="flex-1 pb-12 sm:pb-10 ml-3"
       >
         <div
           className="p-3 rounded-lg transition-all duration-300 group"
@@ -224,7 +224,7 @@ export default function Experience() {
       animate="visible"
     >
       {}
-      <motion.div variants={headerVariants} className="mb-4">
+      <motion.div variants={headerVariants} className="mb-6 sm:mb-4">
         <h2
           className="text-xl font-bold text-glow mb-1"
           style={{ fontFamily: 'var(--font-mono)' }}

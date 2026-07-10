@@ -125,7 +125,7 @@ function ProjectFolder({ project }) {
   const FolderIcon = isOpen ? FolderOpen : Folder;
 
   return (
-    <motion.div variants={folderVariants} className="mb-1">
+    <motion.div variants={folderVariants} className="mb-3">
       {}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
@@ -256,7 +256,7 @@ export default function Projects() {
       animate="visible"
     >
       {}
-      <motion.div variants={folderVariants} className="mb-3">
+      <motion.div variants={folderVariants} className="mb-8">
         <h2
           className="text-xl font-bold text-glow mb-1"
           style={{ fontFamily: 'var(--font-mono)' }}
@@ -274,7 +274,7 @@ export default function Projects() {
       {}
       <motion.div
         variants={folderVariants}
-        className="text-xs mb-2"
+        className="text-xs mb-4"
         style={{ color: 'var(--theme-primary)', opacity: 0.6 }}
       >
         ~/projects/

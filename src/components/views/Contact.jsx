@@ -90,7 +90,7 @@ export default function Contact() {
 
   return (
     <motion.div
-      className="space-y-5"
+      className="space-y-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

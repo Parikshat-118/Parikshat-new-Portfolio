@@ -156,7 +156,7 @@ function TimelineItem({ item, index, total }) {
       {}
       <motion.div
         variants={itemVariants}
-        className="flex-1 pb-6 ml-3"
+        className="flex-1 pb-10 ml-3"
       >
         <div
           className="p-3 rounded-lg transition-all duration-300 group"

@@ -23,7 +23,7 @@ export default function Resume() {
 
   return (
     <motion.div
-      className="space-y-4"
+      className="space-y-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

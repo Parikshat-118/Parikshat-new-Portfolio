@@ -74,7 +74,7 @@ export default function About() {
       animate="visible"
     >
       {}
-      <motion.div variants={itemVariants} className="mb-4">
+      <motion.div variants={itemVariants} className="mb-8">
         <h2
           className="text-xl font-bold text-glow mb-1"
           style={{ fontFamily: 'var(--font-mono)' }}
@@ -90,7 +90,7 @@ export default function About() {
       </motion.div>
 
       {}
-      <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-5">
+      <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-10">
         <img 
           src="/assets/images/profile.jpg" 
           alt="Parikshat Singh" 
@@ -105,7 +105,7 @@ export default function About() {
       </motion.div>
 
       {}
-      <motion.div variants={itemVariants} className="mb-5">
+      <motion.div variants={itemVariants} className="mb-10">
         <p
           className="text-xs uppercase tracking-wider mb-2 font-semibold"
           style={{ color: 'var(--theme-primary)' }}
@@ -113,7 +113,7 @@ export default function About() {
           ┌─ Education
         </p>
 
-        <div className="space-y-3 ml-2">
+        <div className="space-y-5 ml-2">
           <div
             className="p-2 rounded-md transition-colors duration-200"
             style={{ borderLeft: '2px solid rgba(var(--theme-primary-rgb), 0.3)' }}
@@ -151,7 +151,7 @@ export default function About() {
       </motion.div>
 
       {}
-      <motion.div variants={itemVariants} className="mb-5">
+      <motion.div variants={itemVariants} className="mb-10">
         <p
           className="text-xs uppercase tracking-wider mb-2 font-semibold"
           style={{ color: 'var(--theme-primary)' }}
@@ -159,7 +159,7 @@ export default function About() {
           ┌─ Interests & Passions
         </p>
 
-        <div className="space-y-2 ml-2">
+        <div className="space-y-4 ml-2">
           {INTERESTS.map(({ emoji, title, desc }) => (
             <motion.div
               key={title}
@@ -194,7 +194,7 @@ export default function About() {
         </div>
 
         <p
-          className="text-xs mt-2"
+          className="text-xs mt-4"
           style={{ color: 'var(--theme-primary)', opacity: 0.5 }}
         >
           └──────────────────────────
@@ -204,7 +204,7 @@ export default function About() {
       {}
       <motion.div
         variants={itemVariants}
-        className="mb-5 p-3 rounded-md"
+        className="mb-10 p-4 rounded-md"
         style={{
           borderLeft: '3px solid var(--theme-primary)',
           background: 'rgba(var(--theme-primary-rgb), 0.04)',
@@ -228,7 +228,7 @@ export default function About() {
           ┌─ Achievements
         </p>
 
-        <div className="flex flex-wrap gap-2 ml-2">
+        <div className="flex flex-wrap gap-3 ml-2">
           {BADGES.map(({ emoji, label }) => (
             <motion.span
               key={label}

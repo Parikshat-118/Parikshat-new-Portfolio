@@ -174,7 +174,7 @@ export default function Skills() {
       animate="visible"
     >
       {}
-      <motion.div variants={categoryVariants} className="mb-4">
+      <motion.div variants={categoryVariants} className="mb-8">
         <h2
           className="text-xl font-bold text-glow mb-1"
           style={{ fontFamily: 'var(--font-mono)' }}
@@ -188,9 +188,9 @@ export default function Skills() {
 
       {}
       {SKILL_CATEGORIES.map(({ category, icon, skills }) => (
-        <motion.div key={category} variants={categoryVariants} className="mb-5">
+        <motion.div key={category} variants={categoryVariants} className="mb-8">
           {}
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-4">
             <span className="text-sm select-none">{icon}</span>
             <span
               className="text-xs uppercase tracking-wider font-semibold"

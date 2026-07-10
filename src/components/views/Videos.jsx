@@ -194,7 +194,7 @@ export default function Videos() {
   };
 
   return (
-    <div className="space-y-4" onKeyDown={handleKeyDown} tabIndex={-1}>
+    <div className="space-y-8" onKeyDown={handleKeyDown} tabIndex={-1}>
       {}
       <div className="flex items-center gap-2 mb-1">
         <Film size={16} className="text-[var(--theme-primary)]" />

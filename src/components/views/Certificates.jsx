@@ -117,7 +117,7 @@ function CertificateCard({ cert, index }) {
 export default function Certificates() {
   return (
     <motion.div
-      className="space-y-4"
+      className="space-y-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

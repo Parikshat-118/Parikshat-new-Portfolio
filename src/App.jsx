@@ -281,12 +281,12 @@ function App() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-          className="relative z-10 w-full h-[100dvh] flex items-center justify-center p-2 pb-[96px] md:p-4"
+          className="relative z-10 w-full h-[100dvh] flex flex-col items-center p-2 md:p-4"
         >
+          {/* Terminal Window — takes all remaining space */}
           <div
-            className="glass-strong w-full h-full max-w-[1600px] rounded-xl md:rounded-2xl flex flex-col overflow-hidden border border-solid border-glow-animated flicker"
+            className="glass-strong w-full flex-1 min-h-0 max-w-[1600px] rounded-xl md:rounded-2xl flex flex-col overflow-hidden border border-solid border-glow-animated flicker"
             style={{
-              // Dynamic 3D tilt based on mouse
               transform: `perspective(1200px) rotateX(${mousePosition.y * 1.5}deg) rotateY(${mousePosition.x * 1.5}deg)`,
               transition: 'transform 0.3s ease-out',
               boxShadow: `
@@ -296,10 +296,9 @@ function App() {
               `,
             }}
           >
-            {}
+            {/* ─── Top Bar ─── */}
             <div className="flex items-center px-3 py-2 md:px-4 md:py-2.5 border-b flex-shrink-0"
                  style={{ borderColor: 'var(--theme-border)' }}>
-              {}
               <div className="flex items-center gap-2 md:gap-3 mr-auto text-sm">
                 <img
                   src="/assets/images/logo.png"
@@ -319,19 +318,15 @@ function App() {
                 </span>
               </div>
 
-              {}
               <div className="hidden lg:block">
                 <SystemMonitor />
               </div>
 
-              {}
               <div className="flex items-center gap-1 md:gap-2 ml-auto">
-                {}
                 <span className="hidden xl:block text-xs opacity-60 mr-2" style={{ fontFamily: 'var(--font-mono)' }}>
                   {clock}
                 </span>
 
-                {}
                 <button
                   onClick={() => {
                     const themeKeys = Object.keys(THEMES)
@@ -345,7 +340,6 @@ function App() {
                   <Palette size={16} style={{ color: 'var(--theme-primary)' }} />
                 </button>
 
-                {}
                 <button
                   onClick={() => setShowCRT(prev => !prev)}
                   className={`p-1.5 rounded-lg transition-all hover:bg-white/5 ${showCRT ? 'opacity-100' : 'opacity-60 hover:opacity-100'}`}
@@ -354,7 +348,6 @@ function App() {
                   <ScanLine size={16} style={{ color: 'var(--theme-primary)' }} />
                 </button>
 
-                {}
                 <button
                   onClick={() => setShowMatrix(prev => !prev)}
                   className={`p-1.5 rounded-lg transition-all hover:bg-white/5 ${showMatrix ? 'opacity-100' : 'opacity-60 hover:opacity-100'}`}
@@ -365,9 +358,9 @@ function App() {
               </div>
             </div>
 
-            {}
+            {/* ─── Body Area ─── */}
             <div className="flex-grow flex overflow-hidden">
-              {}
+              {/* Desktop Sidebar */}
               <div className="hidden md:block w-72 lg:w-80 border-r flex-shrink-0 overflow-y-auto"
                    style={{ borderColor: 'var(--theme-border)' }}>
                 <Sidebar
@@ -379,7 +372,7 @@ function App() {
                 />
               </div>
 
-              {}
+              {/* Terminal Area */}
               <div className="flex-grow flex flex-col overflow-hidden" ref={terminalRef}>
                 <Terminal
                   onCommandExecute={handleCommand}
@@ -389,19 +382,19 @@ function App() {
               </div>
             </div>
           </div>
+
+          {/* ─── Mobile Bottom Nav (in-flow, not fixed) ─── */}
+          <div className="md:hidden w-full max-w-[1600px] flex-shrink-0 mt-1.5">
+            <MobileNav
+              onNavigate={(cmd) => {
+                setActiveView(cmd)
+                setShowNeofetch(false)
+              }}
+              activeView={activeView}
+            />
+          </div>
         </motion.div>
       )}
-
-      {}
-      <div className="md:hidden">
-        <MobileNav
-          onNavigate={(cmd) => {
-            setActiveView(cmd)
-            setShowNeofetch(false)
-          }}
-          activeView={activeView}
-        />
-      </div>
 
       {}
       <CommandPalette

@@ -118,7 +118,7 @@ export default function AIAssistant({ onAction }) {
       {}
       <motion.button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="fixed bottom-24 md:bottom-6 right-4 md:right-6 z-50 glass rounded-full px-4 py-3 flex items-center gap-2 cursor-pointer select-none"
+        className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50 glass rounded-full px-4 py-3 flex items-center gap-2 cursor-pointer select-none"
         style={{
           boxShadow: 'var(--theme-glow)',
           border: '1px solid rgba(var(--theme-primary-rgb), 0.3)',

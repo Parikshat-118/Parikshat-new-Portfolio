@@ -39,16 +39,13 @@ export default function MobileNav({ onNavigate, activeView }) {
 
   return (
     <>
-      {/* ─── Bottom Navigation Bar ─── */}
+      {/* Bottom Navigation Bar — in normal document flow, NOT fixed */}
       <div 
-        className="fixed bottom-0 left-0 right-0 z-[60] glass-strong flex items-center justify-around px-2 pb-safe pt-3"
+        className="glass-strong flex items-center justify-around px-2 pb-safe pt-2 rounded-xl"
         style={{
           borderTop: '1px solid var(--theme-border)',
-          borderBottom: 'none',
-          borderLeft: 'none',
-          borderRight: 'none',
-          boxShadow: '0 -5px 20px rgba(0,0,0,0.5)',
-          minHeight: '70px'
+          boxShadow: '0 -5px 20px rgba(0,0,0,0.3)',
+          minHeight: '64px'
         }}
       >
         {PRIMARY_TABS.map(({ command, label, icon: Icon }) => {
@@ -60,16 +57,16 @@ export default function MobileNav({ onNavigate, activeView }) {
               className="flex flex-col items-center justify-center flex-1 py-1 transition-colors"
             >
               <div 
-                className={`p-2 rounded-full mb-1 transition-all duration-300 ${isActive ? 'bg-[var(--theme-primary)] bg-opacity-20' : 'bg-transparent'}`}
+                className={`p-2 rounded-full mb-0.5 transition-all duration-300 ${isActive ? 'bg-[var(--theme-primary)] bg-opacity-20' : 'bg-transparent'}`}
                 style={{ 
                   color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)',
                   boxShadow: isActive ? '0 0 10px rgba(var(--theme-primary-rgb), 0.3)' : 'none'
                 }}
               >
-                <Icon size={24} />
+                <Icon size={22} />
               </div>
               <span 
-                className="text-xs font-[var(--font-sans)] font-medium"
+                className="text-[11px] font-[var(--font-sans)] font-medium"
                 style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)' }}
               >
                 {label}
@@ -78,19 +75,19 @@ export default function MobileNav({ onNavigate, activeView }) {
           );
         })}
 
-        {/* ─── More Button ─── */}
+        {/* More Button */}
         <button
           onClick={() => setIsMoreOpen(true)}
           className="flex flex-col items-center justify-center flex-1 py-1 transition-colors"
         >
           <div 
-            className="p-2 rounded-full mb-1 bg-transparent"
+            className="p-2 rounded-full mb-0.5 bg-transparent"
             style={{ color: 'var(--theme-text-muted)' }}
           >
-            <Menu size={24} />
+            <Menu size={22} />
           </div>
           <span 
-            className="text-xs font-[var(--font-sans)] font-medium"
+            className="text-[11px] font-[var(--font-sans)] font-medium"
             style={{ color: 'var(--theme-text-muted)' }}
           >
             More
@@ -98,11 +95,10 @@ export default function MobileNav({ onNavigate, activeView }) {
         </button>
       </div>
 
-      {/* ─── More Menu (Bottom Sheet) ─── */}
+      {/* More Menu (Bottom Sheet) — this one stays fixed as an overlay */}
       <AnimatePresence>
         {isMoreOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -111,7 +107,6 @@ export default function MobileNav({ onNavigate, activeView }) {
               onClick={() => setIsMoreOpen(false)}
             />
             
-            {/* Sheet */}
             <motion.div
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
@@ -120,9 +115,6 @@ export default function MobileNav({ onNavigate, activeView }) {
               className="fixed bottom-0 left-0 right-0 z-[70] glass-strong rounded-t-2xl overflow-hidden"
               style={{
                 borderTop: '1px solid var(--theme-border)',
-                borderBottom: 'none',
-                borderLeft: 'none',
-                borderRight: 'none',
                 paddingBottom: 'max(env(safe-area-inset-bottom), 1rem)'
               }}
             >
@@ -145,8 +137,8 @@ export default function MobileNav({ onNavigate, activeView }) {
                         border: isActive ? '1px solid var(--theme-primary)' : '1px solid transparent'
                       }}
                     >
-                      <Icon size={24} style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)' }} />
-                      <span className="text-base font-[var(--font-sans)]" style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text)' }}>
+                      <Icon size={22} style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)' }} />
+                      <span className="text-sm font-[var(--font-sans)]" style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text)' }}>
                         {label}
                       </span>
                     </button>

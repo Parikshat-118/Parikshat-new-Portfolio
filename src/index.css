@@ -1,0 +1,394 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════
+   PORTFOLIO OS - GLOBAL STYLES
+   ═══════════════════════════════════════════════════ */
+
+/* ─── CSS Custom Properties (Theme System) ─── */
+:root {
+  /* Active theme colors - defaults to Matrix Green */
+  --theme-primary: #00ffc6;
+  --theme-primary-rgb: 0, 255, 198;
+  --theme-secondary: #00eaff;
+  --theme-bg: #0a0a0f;
+  --theme-bg-secondary: #0f0f1a;
+  --theme-surface: rgba(10, 10, 15, 0.85);
+  --theme-surface-hover: rgba(0, 255, 198, 0.08);
+  --theme-text: #e0e0e0;
+  --theme-text-muted: #666680;
+  --theme-border: rgba(0, 255, 198, 0.2);
+  --theme-glow: 0 0 15px rgba(0, 255, 198, 0.3), 0 0 30px rgba(0, 255, 198, 0.1);
+  --theme-glow-strong: 0 0 20px rgba(0, 255, 198, 0.5), 0 0 40px rgba(0, 255, 198, 0.2), 0 0 60px rgba(0, 255, 198, 0.1);
+  
+  /* Font stacks */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Theme Variants ─── */
+[data-theme="blue"] {
+  --theme-primary: #00aaff;
+  --theme-primary-rgb: 0, 170, 255;
+  --theme-secondary: #0066cc;
+  --theme-surface-hover: rgba(0, 170, 255, 0.08);
+  --theme-border: rgba(0, 170, 255, 0.2);
+  --theme-glow: 0 0 15px rgba(0, 170, 255, 0.3), 0 0 30px rgba(0, 170, 255, 0.1);
+  --theme-glow-strong: 0 0 20px rgba(0, 170, 255, 0.5), 0 0 40px rgba(0, 170, 255, 0.2), 0 0 60px rgba(0, 170, 255, 0.1);
+}
+
+[data-theme="amber"] {
+  --theme-primary: #ffaa00;
+  --theme-primary-rgb: 255, 170, 0;
+  --theme-secondary: #ff6600;
+  --theme-surface-hover: rgba(255, 170, 0, 0.08);
+  --theme-border: rgba(255, 170, 0, 0.2);
+  --theme-glow: 0 0 15px rgba(255, 170, 0, 0.3), 0 0 30px rgba(255, 170, 0, 0.1);
+  --theme-glow-strong: 0 0 20px rgba(255, 170, 0, 0.5), 0 0 40px rgba(255, 170, 0, 0.2), 0 0 60px rgba(255, 170, 0, 0.1);
+}
+
+[data-theme="purple"] {
+  --theme-primary: #bf5fff;
+  --theme-primary-rgb: 191, 95, 255;
+  --theme-secondary: #8000ff;
+  --theme-surface-hover: rgba(191, 95, 255, 0.08);
+  --theme-border: rgba(191, 95, 255, 0.2);
+  --theme-glow: 0 0 15px rgba(191, 95, 255, 0.3), 0 0 30px rgba(191, 95, 255, 0.1);
+  --theme-glow-strong: 0 0 20px rgba(191, 95, 255, 0.5), 0 0 40px rgba(191, 95, 255, 0.2), 0 0 60px rgba(191, 95, 255, 0.1);
+}
+
+[data-theme="white"] {
+  --theme-primary: #1a1a2e;
+  --theme-primary-rgb: 26, 26, 46;
+  --theme-secondary: #16213e;
+  --theme-bg: #f0f0f5;
+  --theme-bg-secondary: #e8e8f0;
+  --theme-surface: rgba(240, 240, 245, 0.9);
+  --theme-surface-hover: rgba(26, 26, 46, 0.05);
+  --theme-text: #1a1a2e;
+  --theme-text-muted: #666680;
+  --theme-border: rgba(26, 26, 46, 0.15);
+  --theme-glow: 0 0 15px rgba(26, 26, 46, 0.1), 0 0 30px rgba(26, 26, 46, 0.05);
+  --theme-glow-strong: 0 0 20px rgba(26, 26, 46, 0.2), 0 0 40px rgba(26, 26, 46, 0.1);
+}
+
+/* ─── Base Styles ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+body {
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  font-family: var(--font-mono);
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-primary);
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+  box-shadow: 0 0 6px var(--theme-primary);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(var(--theme-primary-rgb), 0.3);
+  color: var(--theme-primary);
+}
+
+/* ─── Blinking Cursor ─── */
+@keyframes blink-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink-cursor 1s step-end infinite;
+}
+
+/* ─── CRT Scanline Effect (toggleable) ─── */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.crt-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 3px;
+  animation: scanlines 8s linear infinite;
+}
+
+.crt-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.35) 100%);
+}
+
+@keyframes scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
+
+/* ─── Flicker Animation ─── */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.97; }
+}
+
+.flicker {
+  animation: flicker 5s linear infinite;
+}
+
+/* ─── Typing Animation ─── */
+@keyframes typing-cursor {
+  0%, 100% { border-color: var(--theme-primary); }
+  50% { border-color: transparent; }
+}
+
+/* ─── Glow Text ─── */
+.text-glow {
+  color: var(--theme-primary);
+  text-shadow: 0 0 5px rgba(var(--theme-primary-rgb), 0.5),
+               0 0 10px rgba(var(--theme-primary-rgb), 0.3),
+               0 0 20px rgba(var(--theme-primary-rgb), 0.1);
+}
+
+.text-glow-strong {
+  color: var(--theme-primary);
+  text-shadow: 0 0 7px rgba(var(--theme-primary-rgb), 0.8),
+               0 0 15px rgba(var(--theme-primary-rgb), 0.5),
+               0 0 30px rgba(var(--theme-primary-rgb), 0.3),
+               0 0 50px rgba(var(--theme-primary-rgb), 0.1);
+}
+
+/* ─── Glass Effect ─── */
+.glass {
+  background: rgba(13, 13, 13, 0.9);
+  border: 1px solid var(--theme-border);
+}
+
+.glass-strong {
+  background: rgba(13, 13, 13, 0.95);
+  border: 1px solid rgba(var(--theme-primary-rgb), 0.15);
+}
+
+/* ─── Terminal Prompt Colors ─── */
+.prompt-user { color: var(--theme-primary); }
+.prompt-separator { color: var(--theme-text-muted); }
+.prompt-path { color: var(--theme-secondary); }
+.prompt-symbol { color: var(--theme-primary); }
+
+/* ─── Progress Bar Animation ─── */
+@keyframes fill-bar {
+  from { width: 0%; }
+  to { width: var(--bar-width, 100%); }
+}
+
+.progress-bar-fill {
+  animation: fill-bar 1.5s ease-out forwards;
+}
+
+/* ─── Pulse Ring ─── */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--theme-primary);
+  border-radius: inherit;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* ─── Border Glow Animation ─── */
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgba(var(--theme-primary-rgb), 0.3);
+    box-shadow: 0 0 10px rgba(var(--theme-primary-rgb), 0.1), inset 0 0 10px rgba(var(--theme-primary-rgb), 0.05);
+  }
+  50% {
+    border-color: rgba(var(--theme-primary-rgb), 0.6);
+    box-shadow: 0 0 20px rgba(var(--theme-primary-rgb), 0.2), inset 0 0 20px rgba(var(--theme-primary-rgb), 0.1);
+  }
+}
+
+.border-glow-animated {
+  animation: border-glow 4s ease-in-out infinite;
+}
+
+/* ─── Command Link Style ─── */
+.command-link {
+  color: var(--theme-primary);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.command-link:hover {
+  background: rgba(var(--theme-primary-rgb), 0.15);
+  text-shadow: 0 0 8px rgba(var(--theme-primary-rgb), 0.5);
+  box-shadow: var(--theme-glow);
+}
+
+/* ─── Cursor Effects ─── */
+.custom-cursor {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--theme-primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hovering {
+  transform: scale(2.5);
+  background: rgba(var(--theme-primary-rgb), 0.15);
+  border-color: rgba(var(--theme-primary-rgb), 0.5);
+}
+
+.cursor-glow {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(var(--theme-primary-rgb), 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+  transition: transform 0.3s ease;
+}
+
+/* ─── Netflix-style Video Card ─── */
+.video-card {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.video-card:hover {
+  transform: scale(1.05) translateZ(20px);
+  z-index: 10;
+}
+
+.video-card:hover .video-preview {
+  opacity: 1;
+}
+
+/* ─── Achievement Badge ─── */
+.achievement-badge {
+  background: rgba(var(--theme-primary-rgb), 0.08);
+  border: 1px solid rgba(var(--theme-primary-rgb), 0.2);
+  transition: all 0.3s ease;
+}
+
+.achievement-badge:hover {
+  background: rgba(var(--theme-primary-rgb), 0.15);
+  border-color: rgba(var(--theme-primary-rgb), 0.4);
+  transform: translateY(-2px);
+  box-shadow: var(--theme-glow);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .custom-cursor,
+  .cursor-glow {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* ─── Boot Sequence Typewriter ─── */
+@keyframes boot-type {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ─── Floating Animation ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ─── Glitch Effect ─── */
+@keyframes glitch-anim {
+  0% { transform: translate(0); filter: hue-rotate(0deg); }
+  10% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
+  20% { transform: translate(-2px, -2px); }
+  30% { transform: translate(2px, 2px); filter: hue-rotate(180deg); }
+  40% { transform: translate(2px, -2px); }
+  50% { transform: translate(-2px, 2px); }
+  60% { transform: translate(2px, 2px); }
+  70% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, -2px); filter: hue-rotate(270deg); }
+  90% { transform: translate(-2px, 2px); }
+  100% { transform: translate(0); filter: hue-rotate(0deg); }
+}
+
+.glitch-active {
+  animation: glitch-anim 0.2s infinite;
+}
+
+.glitch-heavy {
+  animation: glitch-anim 0.08s infinite;
+  filter: contrast(150%) brightness(120%) drop-shadow(0 0 10px rgba(255,0,0,0.5));
+}

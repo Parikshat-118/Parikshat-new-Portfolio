@@ -68,7 +68,7 @@ const BADGES = [
 export default function About() {
   return (
     <motion.div
-      className="ml-1 py-2 pb-8 max-w-3xl"
+      className="py-2 pb-8 pr-1 sm:ml-1 max-w-3xl"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

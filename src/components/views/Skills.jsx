@@ -168,7 +168,7 @@ function SkillBar({ name, level }) {
 export default function Skills() {
   return (
     <motion.div
-      className="ml-1 py-2 max-w-3xl"
+      className="py-2 pr-1 sm:ml-1 max-w-3xl"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

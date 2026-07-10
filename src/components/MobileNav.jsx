@@ -41,7 +41,7 @@ export default function MobileNav({ onNavigate, activeView }) {
     <>
       {/* Bottom Navigation Bar — in normal document flow, NOT fixed */}
       <div 
-        className="glass-strong flex items-center justify-around px-2 pb-safe pt-2 rounded-xl"
+        className="glass-strong flex items-center justify-around px-2 py-2 rounded-xl"
         style={{
           borderTop: '1px solid var(--theme-border)',
           boxShadow: '0 -5px 20px rgba(0,0,0,0.3)',

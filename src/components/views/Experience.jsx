@@ -218,7 +218,7 @@ function TimelineItem({ item, index, total }) {
 export default function Experience() {
   return (
     <motion.div
-      className="ml-1 py-2 max-w-2xl"
+      className="py-2 pr-1 sm:ml-1 max-w-2xl"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

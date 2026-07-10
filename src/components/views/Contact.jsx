@@ -90,7 +90,7 @@ export default function Contact() {
 
   return (
     <motion.div
-      className="space-y-8"
+      className="space-y-6 sm:space-y-8 pr-1"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -106,7 +106,7 @@ export default function Contact() {
       {}
       <motion.form
         onSubmit={handleSubmit}
-        className="glass rounded-xl p-5 space-y-4 border-glow-animated"
+        className="glass rounded-xl p-4 sm:p-5 space-y-4 border-glow-animated"
         variants={itemVariants}
       >
         {}

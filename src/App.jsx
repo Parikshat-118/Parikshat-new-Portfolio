@@ -281,7 +281,7 @@ function App() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-          className="relative z-10 w-full h-[100dvh] flex flex-col items-center p-2 md:p-4"
+          className="relative z-10 w-full h-[100svh] md:h-[100dvh] flex flex-col items-center p-2 md:p-4"
         >
           {/* Terminal Window — takes all remaining space */}
           <div
@@ -384,7 +384,7 @@ function App() {
           </div>
 
           {/* ─── Mobile Bottom Nav (in-flow, not fixed) ─── */}
-          <div className="md:hidden w-full max-w-[1600px] flex-shrink-0 mt-1.5">
+          <div className="md:hidden w-full max-w-[1600px] flex-shrink-0 mt-2">
             <MobileNav
               onNavigate={(cmd) => {
                 setActiveView(cmd)

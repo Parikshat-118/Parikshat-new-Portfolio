@@ -117,7 +117,7 @@ function CertificateCard({ cert, index }) {
 export default function Certificates() {
   return (
     <motion.div
-      className="space-y-8"
+      className="space-y-6 sm:space-y-8 pr-1"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -137,7 +137,7 @@ export default function Certificates() {
       </motion.p>
 
       {}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         {certificates.map((cert, index) => (
           <CertificateCard key={cert.id} cert={cert} index={index} />
         ))}

@@ -349,7 +349,13 @@ export default function Terminal({ onCommandExecute, activeView, contentView }) 
     }
   };
 
-    const focusInput = (e) => {
+  const focusInput = (e) => {
+    // On mobile, aggressive autofocus brings up the virtual keyboard unexpectedly.
+    // Users can still tap the input directly if they want to type.
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return;
+    }
+
     // Don't steal focus if the user is clicking on an interactive element inside the terminal
     if (e && e.target) {
       const tag = e.target.tagName.toLowerCase();

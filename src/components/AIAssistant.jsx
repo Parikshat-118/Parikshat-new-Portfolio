@@ -118,7 +118,7 @@ export default function AIAssistant({ onAction }) {
       {}
       <motion.button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="fixed bottom-6 right-6 z-50 glass rounded-full px-4 py-3 flex items-center gap-2 cursor-pointer select-none"
+        className="fixed bottom-24 md:bottom-6 right-4 md:right-6 z-50 glass rounded-full px-4 py-3 flex items-center gap-2 cursor-pointer select-none"
         style={{
           boxShadow: 'var(--theme-glow)',
           border: '1px solid rgba(var(--theme-primary-rgb), 0.3)',
@@ -129,7 +129,7 @@ export default function AIAssistant({ onAction }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, type: 'spring', stiffness: 200 }}
       >
-        {}
+        {/* Pulse effect */}
         <span
           className="absolute inset-0 rounded-full animate-ping opacity-20"
           style={{
@@ -144,7 +144,7 @@ export default function AIAssistant({ onAction }) {
         </span>
       </motion.button>
 
-      {}
+      {/* ─── Chat Panel ─── */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -153,7 +153,7 @@ export default function AIAssistant({ onAction }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed bottom-20 right-6 z-50 flex flex-col overflow-hidden rounded-xl"
+            className="fixed bottom-[110px] md:bottom-20 right-4 md:right-6 z-50 flex flex-col overflow-hidden rounded-xl"
             style={{
               width: '320px',
               height: '420px',

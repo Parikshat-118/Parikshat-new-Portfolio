@@ -41,13 +41,14 @@ export default function MobileNav({ onNavigate, activeView }) {
     <>
       {/* ─── Bottom Navigation Bar ─── */}
       <div 
-        className="fixed bottom-0 left-0 right-0 z-[60] glass-strong flex items-center justify-around px-2 pb-safe pt-2"
+        className="fixed bottom-0 left-0 right-0 z-[60] glass-strong flex items-center justify-around px-2 pb-safe pt-3"
         style={{
           borderTop: '1px solid var(--theme-border)',
           borderBottom: 'none',
           borderLeft: 'none',
           borderRight: 'none',
-          boxShadow: '0 -5px 20px rgba(0,0,0,0.5)'
+          boxShadow: '0 -5px 20px rgba(0,0,0,0.5)',
+          minHeight: '70px'
         }}
       >
         {PRIMARY_TABS.map(({ command, label, icon: Icon }) => {
@@ -56,19 +57,19 @@ export default function MobileNav({ onNavigate, activeView }) {
             <button
               key={command}
               onClick={() => handleNavigate(command)}
-              className="flex flex-col items-center justify-center w-16 p-1 transition-colors"
+              className="flex flex-col items-center justify-center flex-1 py-1 transition-colors"
             >
               <div 
-                className={`p-1.5 rounded-full mb-1 transition-all duration-300 ${isActive ? 'bg-[var(--theme-primary)] bg-opacity-20' : 'bg-transparent'}`}
+                className={`p-2 rounded-full mb-1 transition-all duration-300 ${isActive ? 'bg-[var(--theme-primary)] bg-opacity-20' : 'bg-transparent'}`}
                 style={{ 
                   color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)',
                   boxShadow: isActive ? '0 0 10px rgba(var(--theme-primary-rgb), 0.3)' : 'none'
                 }}
               >
-                <Icon size={20} />
+                <Icon size={24} />
               </div>
               <span 
-                className="text-[10px] font-[var(--font-sans)] font-medium"
+                className="text-xs font-[var(--font-sans)] font-medium"
                 style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)' }}
               >
                 {label}
@@ -80,16 +81,16 @@ export default function MobileNav({ onNavigate, activeView }) {
         {/* ─── More Button ─── */}
         <button
           onClick={() => setIsMoreOpen(true)}
-          className="flex flex-col items-center justify-center w-16 p-1 transition-colors"
+          className="flex flex-col items-center justify-center flex-1 py-1 transition-colors"
         >
           <div 
-            className="p-1.5 rounded-full mb-1 bg-transparent"
+            className="p-2 rounded-full mb-1 bg-transparent"
             style={{ color: 'var(--theme-text-muted)' }}
           >
-            <Menu size={20} />
+            <Menu size={24} />
           </div>
           <span 
-            className="text-[10px] font-[var(--font-sans)] font-medium"
+            className="text-xs font-[var(--font-sans)] font-medium"
             style={{ color: 'var(--theme-text-muted)' }}
           >
             More
@@ -128,7 +129,7 @@ export default function MobileNav({ onNavigate, activeView }) {
               <div className="px-5 py-4 border-b border-[var(--theme-border)] flex items-center justify-between">
                 <span className="font-bold text-[var(--theme-primary)] text-glow">More Sections</span>
                 <button onClick={() => setIsMoreOpen(false)} className="p-1 text-[var(--theme-text-muted)] hover:text-[var(--theme-primary)]">
-                  <X size={20} />
+                  <X size={24} />
                 </button>
               </div>
               <div className="p-4 grid grid-cols-2 gap-3">
@@ -138,14 +139,14 @@ export default function MobileNav({ onNavigate, activeView }) {
                     <button
                       key={command}
                       onClick={() => handleNavigate(command)}
-                      className="flex items-center gap-3 p-3 rounded-xl transition-colors text-left"
+                      className="flex items-center gap-3 p-4 rounded-xl transition-colors text-left"
                       style={{
                         backgroundColor: isActive ? 'rgba(var(--theme-primary-rgb), 0.1)' : 'rgba(255,255,255,0.05)',
                         border: isActive ? '1px solid var(--theme-primary)' : '1px solid transparent'
                       }}
                     >
-                      <Icon size={20} style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)' }} />
-                      <span className="text-sm font-[var(--font-sans)]" style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text)' }}>
+                      <Icon size={24} style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)' }} />
+                      <span className="text-base font-[var(--font-sans)]" style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text)' }}>
                         {label}
                       </span>
                     </button>

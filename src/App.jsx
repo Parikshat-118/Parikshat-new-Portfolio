@@ -281,10 +281,10 @@ function App() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-          className="relative z-10 w-full h-[100dvh] flex items-center justify-center p-0 md:p-4"
+          className="relative z-10 w-full h-[100dvh] flex items-center justify-center p-2 pb-[96px] md:p-4"
         >
           <div
-            className="glass-strong w-full h-full max-w-[1600px] rounded-none md:rounded-2xl flex flex-col overflow-hidden border-none md:border-solid md:border-glow-animated flicker"
+            className="glass-strong w-full h-full max-w-[1600px] rounded-xl md:rounded-2xl flex flex-col overflow-hidden border border-solid border-glow-animated flicker"
             style={{
               // Dynamic 3D tilt based on mouse
               transform: `perspective(1200px) rotateX(${mousePosition.y * 1.5}deg) rotateY(${mousePosition.x * 1.5}deg)`,
@@ -380,7 +380,7 @@ function App() {
               </div>
 
               {}
-              <div className="flex-grow flex flex-col overflow-hidden mb-24 md:mb-0" ref={terminalRef}>
+              <div className="flex-grow flex flex-col overflow-hidden" ref={terminalRef}>
                 <Terminal
                   onCommandExecute={handleCommand}
                   activeView={activeView}

@@ -180,8 +180,9 @@ function BootSequence({ onBootComplete }) {
             style={{
               flex: 1,
               overflowY: "auto",
-              padding: "2rem 2.5rem",
-              scrollbarWidth: "none", // Firefox
+              overflowX: "hidden",
+              padding: "1.5rem 1rem",
+              scrollbarWidth: "none",
             }}
             className="boot-log-scroll"
           >
@@ -194,7 +195,8 @@ function BootSequence({ onBootComplete }) {
                   fontSize: "0.875rem",
                   lineHeight: "1.6",
                   minHeight: "1.4em",
-                  whiteSpace: "pre",
+                  whiteSpace: "pre-wrap",
+                  wordBreak: "break-all",
                 }}
               >
                 {line}
@@ -209,7 +211,8 @@ function BootSequence({ onBootComplete }) {
                   fontSize: "0.875rem",
                   lineHeight: "1.6",
                   minHeight: "1.4em",
-                  whiteSpace: "pre",
+                  whiteSpace: "pre-wrap",
+                  wordBreak: "break-all",
                   color: entry.isHighlight ? "#00ffc6" : "#b0b0b0",
                   fontWeight: entry.isHighlight ? 700 : 400,
                   textShadow: entry.isHighlight

@@ -82,6 +82,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  overflow-x: hidden;
 }
 
 @media (min-width: 1024px) {
@@ -95,13 +97,17 @@ body {
   color: var(--theme-text);
   font-family: var(--font-mono);
   overflow: hidden;
+  overflow-x: hidden;
   min-height: 100dvh;
+  width: 100%;
+  max-width: 100vw;
 }
 
 #root {
   width: 100%;
   height: 100dvh;
   overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* ─── Custom Scrollbar ─── */

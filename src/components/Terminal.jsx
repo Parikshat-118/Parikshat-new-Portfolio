@@ -381,7 +381,8 @@ export default function Terminal({ onCommandExecute, activeView, contentView }) 
       {}
       <div
         ref={outputRef}
-        className="flex-1 overflow-y-auto p-4 pb-0 font-[var(--font-mono)] text-sm md:text-base leading-relaxed space-y-1"
+        className="flex-1 overflow-y-auto overflow-x-hidden p-4 pb-0 font-[var(--font-mono)] text-sm md:text-base leading-relaxed space-y-1"
+        style={{ WebkitOverflowScrolling: 'touch' }}
       >
         <AnimatePresence initial={false}>
           {outputLines.map(({ id, content }) => (
@@ -397,7 +398,7 @@ export default function Terminal({ onCommandExecute, activeView, contentView }) 
         </AnimatePresence>
 
         {}
-        <div className="mt-4 pb-4">
+        <div className="mt-4 pb-16 md:pb-4">
           {contentView}
         </div>
 

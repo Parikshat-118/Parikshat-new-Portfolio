@@ -113,7 +113,7 @@ export default function Resume() {
               src={RESUME_URL}
               title="Parikshat Singh Resume"
               className="w-full border-none"
-              style={{ height: '70vh', minHeight: '500px' }}
+              style={{ height: '70vh', minHeight: '300px' }}
               onError={() => setIframeError(true)}
             />
           </div>

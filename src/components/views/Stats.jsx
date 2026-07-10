@@ -44,7 +44,7 @@ const sectionVariants = {
 const StatCard = ({ icon: Icon, label, value, delay = 0 }) => (
   <motion.div
     variants={cardVariants}
-    className="glass achievement-badge rounded-xl p-4 flex flex-col items-center gap-2 min-w-[120px]"
+    className="glass achievement-badge rounded-xl p-3 md:p-4 flex flex-col items-center gap-2"
   >
     {Icon && <Icon size={20} className="text-[var(--theme-primary)] opacity-70" />}
     <span
@@ -407,7 +407,7 @@ export default function Stats() {
               {}
               <motion.div
                 variants={containerVariants}
-                className="grid grid-cols-3 gap-2"
+                className="grid grid-cols-3 gap-1.5 sm:gap-2"
               >
                 {[leetCodeStats.easy, leetCodeStats.medium, leetCodeStats.hard].map(
                   (diff) => (

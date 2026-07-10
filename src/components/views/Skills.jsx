@@ -109,8 +109,8 @@ function SkillBar({ name, level }) {
     >
       {}
       <span
-        className="shrink-0 whitespace-pre"
-        style={{ color: 'var(--theme-text)', width: '140px' }}
+        className="shrink-0 whitespace-pre text-xs sm:text-sm"
+        style={{ color: 'var(--theme-text)', width: '100px', maxWidth: '30vw' }}
       >
         {paddedName}
       </span>

@@ -1,197 +1,161 @@
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  X,
   User,
   FolderOpen,
-  Wrench,
   Briefcase,
+  Mail,
+  Menu,
+  X,
+  Wrench,
   Film,
   Award,
   FileText,
-  Mail,
-  BarChart3,
-  Terminal,
+  BarChart3
 } from 'lucide-react';
 
-const NAV_ITEMS = [
-  { command: 'about',      label: 'About',       icon: User },
-  { command: 'projects',   label: 'Projects',    icon: FolderOpen },
+const PRIMARY_TABS = [
+  { command: 'about',      label: 'About',      icon: User },
+  { command: 'experience', label: 'Experience', icon: Briefcase },
+  { command: 'projects',   label: 'Projects',   icon: FolderOpen },
+  { command: 'contact',    label: 'Contact',    icon: Mail },
+];
+
+const MORE_TABS = [
   { command: 'skills',     label: 'Skills',      icon: Wrench },
-  { command: 'experience', label: 'Experience',  icon: Briefcase },
   { command: 'videos',     label: 'Videos',      icon: Film },
   { command: 'certs',      label: 'Certificates', icon: Award },
   { command: 'resume',     label: 'Resume',      icon: FileText },
-  { command: 'contact',    label: 'Contact',     icon: Mail },
   { command: 'stats',      label: 'Stats',       icon: BarChart3 },
 ];
 
-const backdropVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.25 } },
-  exit: { opacity: 0, transition: { duration: 0.2, delay: 0.1 } },
-};
+export default function MobileNav({ onNavigate, activeView }) {
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
 
-const panelVariants = {
-  hidden: { x: '100%', opacity: 0.5 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { type: 'spring', stiffness: 300, damping: 30 },
-  },
-  exit: {
-    x: '100%',
-    opacity: 0,
-    transition: { duration: 0.2, ease: 'easeIn' },
-  },
-};
-
-const listVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.05, delayChildren: 0.15 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: 30 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { type: 'spring', stiffness: 200, damping: 20 },
-  },
-};
-
-export default function MobileNav({ isOpen, onClose, onNavigate, activeView }) {
-    const handleItemClick = (command) => {
-    onNavigate?.(command);
-    onClose?.();
+  const handleNavigate = (cmd) => {
+    onNavigate?.(cmd);
+    setIsMoreOpen(false);
   };
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {}
-          <motion.div
-            key="mobile-nav-backdrop"
-            variants={backdropVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="fixed inset-0 z-[60]"
-            style={{
-              backgroundColor: 'rgba(10, 10, 15, 0.8)',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
-            }}
-            onClick={onClose}
-          />
+    <>
+      {/* ─── Bottom Navigation Bar ─── */}
+      <div 
+        className="fixed bottom-0 left-0 right-0 z-[60] glass-strong flex items-center justify-around px-2 pb-safe pt-2"
+        style={{
+          borderTop: '1px solid var(--theme-border)',
+          borderBottom: 'none',
+          borderLeft: 'none',
+          borderRight: 'none',
+          boxShadow: '0 -5px 20px rgba(0,0,0,0.5)'
+        }}
+      >
+        {PRIMARY_TABS.map(({ command, label, icon: Icon }) => {
+          const isActive = activeView === command;
+          return (
+            <button
+              key={command}
+              onClick={() => handleNavigate(command)}
+              className="flex flex-col items-center justify-center w-16 p-1 transition-colors"
+            >
+              <div 
+                className={`p-1.5 rounded-full mb-1 transition-all duration-300 ${isActive ? 'bg-[var(--theme-primary)] bg-opacity-20' : 'bg-transparent'}`}
+                style={{ 
+                  color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)',
+                  boxShadow: isActive ? '0 0 10px rgba(var(--theme-primary-rgb), 0.3)' : 'none'
+                }}
+              >
+                <Icon size={20} />
+              </div>
+              <span 
+                className="text-[10px] font-[var(--font-sans)] font-medium"
+                style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)' }}
+              >
+                {label}
+              </span>
+            </button>
+          );
+        })}
 
-          {}
-          <motion.div
-            key="mobile-nav-panel"
-            variants={panelVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="fixed top-0 right-0 bottom-0 z-[61] w-[280px] max-w-[85vw] glass-strong flex flex-col"
-            style={{
-              borderLeft: '1px solid rgba(var(--theme-primary-rgb), 0.15)',
-              boxShadow: '-10px 0 40px rgba(0, 0, 0, 0.5)',
-            }}
+        {/* ─── More Button ─── */}
+        <button
+          onClick={() => setIsMoreOpen(true)}
+          className="flex flex-col items-center justify-center w-16 p-1 transition-colors"
+        >
+          <div 
+            className="p-1.5 rounded-full mb-1 bg-transparent"
+            style={{ color: 'var(--theme-text-muted)' }}
           >
-            {}
-            <div
-              className="flex items-center justify-between px-5 py-4 shrink-0"
+            <Menu size={20} />
+          </div>
+          <span 
+            className="text-[10px] font-[var(--font-sans)] font-medium"
+            style={{ color: 'var(--theme-text-muted)' }}
+          >
+            More
+          </span>
+        </button>
+      </div>
+
+      {/* ─── More Menu (Bottom Sheet) ─── */}
+      <AnimatePresence>
+        {isMoreOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[65] bg-black/60 backdrop-blur-sm"
+              onClick={() => setIsMoreOpen(false)}
+            />
+            
+            {/* Sheet */}
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="fixed bottom-0 left-0 right-0 z-[70] glass-strong rounded-t-2xl overflow-hidden"
               style={{
-                borderBottom: '1px solid rgba(var(--theme-primary-rgb), 0.12)',
+                borderTop: '1px solid var(--theme-border)',
+                borderBottom: 'none',
+                borderLeft: 'none',
+                borderRight: 'none',
+                paddingBottom: 'max(env(safe-area-inset-bottom), 1rem)'
               }}
             >
-              <div className="flex items-center gap-2">
-                <Terminal size={18} className="text-[var(--theme-primary)]" />
-                <span className="text-[var(--theme-primary)] font-bold text-sm font-[var(--font-mono)] text-glow">
-                  Navigation
-                </span>
+              <div className="px-5 py-4 border-b border-[var(--theme-border)] flex items-center justify-between">
+                <span className="font-bold text-[var(--theme-primary)] text-glow">More Sections</span>
+                <button onClick={() => setIsMoreOpen(false)} className="p-1 text-[var(--theme-text-muted)] hover:text-[var(--theme-primary)]">
+                  <X size={20} />
+                </button>
               </div>
-              <button
-                onClick={onClose}
-                className="text-[var(--theme-text-muted)] hover:text-[var(--theme-primary)] transition-colors cursor-pointer p-1"
-                aria-label="Close navigation"
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            {}
-            <motion.nav
-              className="flex-1 overflow-y-auto px-3 py-4"
-              variants={listVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <div className="space-y-1">
-                {NAV_ITEMS.map(({ command, label, icon: Icon }) => {
+              <div className="p-4 grid grid-cols-2 gap-3">
+                {MORE_TABS.map(({ command, label, icon: Icon }) => {
                   const isActive = activeView === command;
-
                   return (
-                    <motion.button
+                    <button
                       key={command}
-                      variants={itemVariants}
-                      onClick={() => handleItemClick(command)}
-                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-200 cursor-pointer font-[var(--font-mono)] text-sm ${
-                        isActive
-                          ? 'text-[var(--theme-primary)]'
-                          : 'text-[var(--theme-text)] hover:text-[var(--theme-primary)]'
-                      }`}
-                      style={
-                        isActive
-                          ? {
-                              background: 'rgba(var(--theme-primary-rgb), 0.1)',
-                              border: '1px solid rgba(var(--theme-primary-rgb), 0.2)',
-                              boxShadow: 'var(--theme-glow)',
-                            }
-                          : {
-                              background: 'transparent',
-                              border: '1px solid transparent',
-                            }
-                      }
-                      whileTap={{ scale: 0.97 }}
+                      onClick={() => handleNavigate(command)}
+                      className="flex items-center gap-3 p-3 rounded-xl transition-colors text-left"
+                      style={{
+                        backgroundColor: isActive ? 'rgba(var(--theme-primary-rgb), 0.1)' : 'rgba(255,255,255,0.05)',
+                        border: isActive ? '1px solid var(--theme-primary)' : '1px solid transparent'
+                      }}
                     >
-                      <Icon
-                        size={18}
-                        className={
-                          isActive
-                            ? 'text-[var(--theme-primary)]'
-                            : 'text-[var(--theme-text-muted)]'
-                        }
-                      />
-                      <span>{label}</span>
-
-                      {}
-                      {isActive && (
-                        <span className="ml-auto w-2 h-2 rounded-full bg-[var(--theme-primary)] animate-pulse" />
-                      )}
-                    </motion.button>
+                      <Icon size={20} style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text-muted)' }} />
+                      <span className="text-sm font-[var(--font-sans)]" style={{ color: isActive ? 'var(--theme-primary)' : 'var(--theme-text)' }}>
+                        {label}
+                      </span>
+                    </button>
                   );
                 })}
               </div>
-            </motion.nav>
-
-            {}
-            <div
-              className="shrink-0 px-5 py-3"
-              style={{
-                borderTop: '1px solid rgba(var(--theme-primary-rgb), 0.08)',
-              }}
-            >
-              <p className="text-[var(--theme-text-muted)] text-[10px] font-[var(--font-mono)] text-center opacity-60">
-                Parikshat's Portfolio — Parikshat Singh
-              </p>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

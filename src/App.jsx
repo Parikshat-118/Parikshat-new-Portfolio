@@ -281,10 +281,10 @@ function App() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-          className="relative z-10 w-full h-screen flex items-center justify-center p-2 md:p-4"
+          className="relative z-10 w-full h-[100dvh] flex items-center justify-center p-0 md:p-4"
         >
           <div
-            className="glass-strong w-full h-full max-w-[1600px] rounded-2xl flex flex-col overflow-hidden border-glow-animated flicker"
+            className="glass-strong w-full h-full max-w-[1600px] rounded-none md:rounded-2xl flex flex-col overflow-hidden border-none md:border-solid md:border-glow-animated flicker"
             style={{
               // Dynamic 3D tilt based on mouse
               transform: `perspective(1200px) rotateX(${mousePosition.y * 1.5}deg) rotateY(${mousePosition.x * 1.5}deg)`,
@@ -362,19 +362,11 @@ function App() {
                 >
                   <Monitor size={16} style={{ color: 'var(--theme-primary)' }} />
                 </button>
-
-                {}
-                <button
-                  onClick={() => setMobileNavOpen(true)}
-                  className="md:hidden p-1.5 rounded-lg opacity-60 hover:opacity-100 transition-all hover:bg-white/5"
-                >
-                  <Menu size={18} style={{ color: 'var(--theme-primary)' }} />
-                </button>
               </div>
             </div>
 
             {}
-            <div className="flex-grow flex overflow-hidden">
+            <div className="flex-grow flex overflow-hidden pb-16 md:pb-0">
               {}
               <div className="hidden md:block w-72 lg:w-80 border-r flex-shrink-0 overflow-y-auto"
                    style={{ borderColor: 'var(--theme-border)' }}>
@@ -401,16 +393,15 @@ function App() {
       )}
 
       {}
-      <MobileNav
-        isOpen={mobileNavOpen}
-        onClose={() => setMobileNavOpen(false)}
-        onNavigate={(cmd) => {
-          setActiveView(cmd)
-          setShowNeofetch(false)
-          setMobileNavOpen(false)
-        }}
-        activeView={activeView}
-      />
+      <div className="md:hidden">
+        <MobileNav
+          onNavigate={(cmd) => {
+            setActiveView(cmd)
+            setShowNeofetch(false)
+          }}
+          activeView={activeView}
+        />
+      </div>
 
       {}
       <CommandPalette

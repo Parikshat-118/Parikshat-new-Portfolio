@@ -274,7 +274,7 @@ function App() {
       {}
       {booted && (
         <CyberBackground
-          visible={showMatrix && !isMobile}
+          visible={showMatrix}
           themeColor={THEMES[theme]?.color || '#00ffc6'}
           mousePosition={mousePosition}
         />

@@ -366,7 +366,7 @@ function App() {
             </div>
 
             {}
-            <div className="flex-grow flex overflow-hidden pb-24 md:pb-0">
+            <div className="flex-grow flex overflow-hidden">
               {}
               <div className="hidden md:block w-72 lg:w-80 border-r flex-shrink-0 overflow-y-auto"
                    style={{ borderColor: 'var(--theme-border)' }}>
@@ -380,7 +380,7 @@ function App() {
               </div>
 
               {}
-              <div className="flex-grow flex flex-col overflow-hidden" ref={terminalRef}>
+              <div className="flex-grow flex flex-col overflow-hidden mb-24 md:mb-0" ref={terminalRef}>
                 <Terminal
                   onCommandExecute={handleCommand}
                   activeView={activeView}

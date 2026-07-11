@@ -122,7 +122,7 @@ export default function About() {
               <span className="text-xs" style={{ color: 'var(--theme-text-muted)' }}>2024 - 2028 (Expected)</span>
             </div>
             <p className="text-sm" style={{ color: 'var(--theme-text)' }}>Bharati Vidyapeeth's College of Engineering</p>
-            <p className="text-xs mt-1" style={{ color: 'var(--theme-text-muted)' }}>Current CGPA: 8.7 / 10</p>
+            <p className="text-xs mt-1" style={{ color: 'var(--theme-text-muted)' }}>Current CGPA: 8.9/ 10</p>
           </div>
           <div
             className="terminal-card transition-colors duration-200"
